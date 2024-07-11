@@ -1,0 +1,11 @@
+echo "What is the default logging level for <org.apache.catalina.util.LifecycleBase>?"
+curl http://localhost:8080/actuator/loggers/org.apache.catalina.util.LifecycleBase
+
+echo "Which endpoint ensures that your application is healthy?"
+curl http://localhost:8080/actuator/health
+
+echo "Which Java Home variable does your application take into consideration (it's there as a JAVA_HOME env var)"
+curl http://localhost:8080/actuator/env/JAVA_HOME
+
+echo "Why wasn't the R2dbcAutoConfiguration read?"
+curl http://localhost:8080/actuator/conditions | jq '.contexts.application.negativeMatches.R2dbcAutoConfiguration'
